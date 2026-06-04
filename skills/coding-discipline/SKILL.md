@@ -1,6 +1,6 @@
 ---
 name: coding-discipline
-description: Behavioral guidelines to reduce common LLM coding mistakes. Use when writing, reviewing, or refactoring code to avoid overcomplication, make surgical changes, surface assumptions, and define verifiable success criteria.
+description: Behavioral guidelines to reduce common LLM coding mistakes. Covers code quality, security, performance, error handling, style, and git safety.
 license: MIT
 ---
 
@@ -19,6 +19,8 @@ Before implementing:
 - If multiple interpretations exist, present them - don't pick silently.
 - If a simpler approach exists, say so. Push back when warranted.
 - If something is unclear, stop. Name what's confusing. Ask.
+- Flag potential breaking changes before implementing.
+- For significant changes, propose your approach and wait for approval before writing code.
 
 ## 2. Simplicity First
 
@@ -27,8 +29,9 @@ Before implementing:
 - No features beyond what was asked.
 - No abstractions for single-use code.
 - No "flexibility" or "configurability" that wasn't requested.
-- No error handling for impossible scenarios.
+- No defensive checks for states that cannot happen by design (e.g. null checks on values the framework guarantees are non-null).
 - If you write 200 lines and it could be 50, rewrite it.
+- Do not build apps, scripts, or tooling unless explicitly asked.
 
 Ask yourself: "Would a senior engineer say this is overcomplicated?" If yes, simplify.
 
@@ -65,6 +68,12 @@ For multi-step tasks, state a brief plan:
 ```
 
 Strong success criteria let you loop independently. Weak criteria ("make it work") require constant clarification.
+
+Test level guidance:
+- Unit tests for pure functions and business logic.
+- Integration tests for code that touches external systems (DB, API, filesystem).
+- Do not write e2e tests unless explicitly asked.
+- Do not add tests for existing untested code unless asked.
 
 ## 5. Security by Default
 
@@ -107,3 +116,26 @@ Before adding a dependency:
 - Replace magic numbers and strings with named constants.
 - Place constants near the code that uses them, not in a global dump.
 - Names should explain the *why*, not just the *what* (`MAX_RETRY_ATTEMPTS` not `THREE`).
+
+## 10. Code Style
+
+**Code is in English. Names describe intent.**
+
+- Always write code, comments, and identifiers in English.
+- Use descriptive names for variables and functions — the name should explain what it does.
+- Comments describe things that aren't obvious from the code. Don't repeat the code in comments.
+- Avoid unnecessary comments. If removing a comment wouldn't confuse a future reader, don't write it.
+- Add a short comment to classes explaining what they do and why — skip it only when it's too obvious.
+- If the existing codebase uses non-English identifiers: match the existing pattern when editing, but write all new identifiers in English. Never mix languages within the same scope.
+
+## 11. Git Safety
+
+**Only read-only git commands. Never change state.**
+
+Allowed: `diff`, `log`, `status`, `show`, `blame`
+
+Never run without explicit user instruction: `commit`, `push`, `rebase`, `merge`, `checkout`, `reset`, `branch`, `stash`, `cherry-pick`, `tag`
+
+---
+
+**These guidelines are working if:** fewer unnecessary changes in diffs, fewer rewrites due to overcomplication, clarifying questions come before implementation, and security/performance issues are caught before review.
