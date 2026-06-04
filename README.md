@@ -11,7 +11,7 @@ A collection of Claude Code skills and behavioral guidelines.
 ## Install (Claude Code Plugin)
 
 ```
-/plugin marketplace add caner-demirkol/caner-demirkol-skills
+/plugin marketplace add canerdemirkol/caner-demirkol-skills
 /plugin install caner-demirkol-skills@caner-demirkol-skills
 ```
 
@@ -20,7 +20,7 @@ A collection of Claude Code skills and behavioral guidelines.
 Copy the skill's `CLAUDE.md` into your project:
 
 ```bash
-curl -o CLAUDE.md https://raw.githubusercontent.com/caner-demirkol/caner-demirkol-skills/main/skills/caner-demirkol-guidelines/CLAUDE.md
+curl -o CLAUDE.md https://raw.githubusercontent.com/canerdemirkol/caner-demirkol-skills/main/skills/coding-discipline/CLAUDE.md
 ```
 
 ## Install (Cursor)
