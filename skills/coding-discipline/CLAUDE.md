@@ -60,6 +60,48 @@ For multi-step tasks, state a brief plan:
 
 Strong success criteria let you loop independently. Weak criteria ("make it work") require constant clarification.
 
+## 5. Security by Default
+
+**Treat every input as untrusted. Every code path as exploitable.**
+
+- Validate and sanitize all inputs at system boundaries (user input, API responses, file reads).
+- Never hardcode secrets, tokens, or credentials — not even in comments.
+- Flag SQL queries, shell commands, and file paths that use unsanitized input.
+- Security applies to all code, not just user-facing surfaces.
+
+## 6. Dependency Minimalism
+
+**Don't add a package for what 5 lines of code can do.**
+
+Before adding a dependency:
+- Can this be done with the standard library or existing dependencies?
+- Is the package actively maintained? What is its CVE surface?
+- If a package is justified, pin the version.
+
+## 7. Algorithmic Complexity
+
+**Flag complexity before it ships, not after it scales.**
+
+- State the time/space complexity of non-trivial algorithms.
+- Prefer O(n) over O(n²) when input size is unknown or unbounded.
+- Flag N+1 queries, nested loops over large collections, and unbounded recursion.
+
+## 8. Explicit Error Handling
+
+**No silent failures. Errors must be handled or explicitly propagated.**
+
+- Never swallow exceptions silently (empty catch blocks, bare `except:`).
+- Either handle the error meaningfully or let it propagate to the caller.
+- Log with context: what failed and what the inputs were.
+
+## 9. Constants over Magic Values
+
+**Named constants, not raw numbers or strings.**
+
+- Replace magic numbers and strings with named constants.
+- Place constants near the code that uses them, not in a global dump.
+- Names should explain the *why*, not just the *what* (`MAX_RETRY_ATTEMPTS` not `THREE`).
+
 ---
 
-**These guidelines are working if:** fewer unnecessary changes in diffs, fewer rewrites due to overcomplication, and clarifying questions come before implementation rather than after mistakes.
+**These guidelines are working if:** fewer unnecessary changes in diffs, fewer rewrites due to overcomplication, clarifying questions come before implementation, and security/performance issues are caught before review.
