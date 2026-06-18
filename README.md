@@ -26,22 +26,22 @@ Based on [obra/superpowers](https://github.com/obra/superpowers) (MIT).
 
 ## Using Both Skills Together
 
-### Yöntem 1: Plugin (en kolay — tüm projelerde çalışır)
+### Method 1: Plugin (easiest — works across all projects)
 
 ```
 /plugin marketplace add canerdemirkol/caner-demirkol-skills
 /plugin install caner-demirkol-skills@caner-demirkol-skills
 ```
 
-Kurulduktan sonra konuşma başında her ikisini birden aktif et:
+After installing, activate both at the start of any conversation:
 
 ```
 Use both the coding-discipline and superpowers skills
 ```
 
-### Yöntem 2: CLAUDE.md (proje bazlı, kalıcı)
+### Method 2: CLAUDE.md (per-project, permanent)
 
-Projenin root'unda ikisini tek dosyaya birleştir:
+Combine both into a single `CLAUDE.md` at your project root:
 
 ```bash
 curl https://raw.githubusercontent.com/canerdemirkol/caner-demirkol-skills/main/skills/coding-discipline/SKILL.md > CLAUDE.md
@@ -49,28 +49,28 @@ echo "" >> CLAUDE.md
 curl https://raw.githubusercontent.com/canerdemirkol/caner-demirkol-skills/main/skills/superpowers/SKILL.md >> CLAUDE.md
 ```
 
-`CLAUDE.md` her session başında otomatik yüklenir — bir şey söylemene gerek kalmaz.
+`CLAUDE.md` is loaded automatically at the start of every session — no manual activation needed.
 
-### Pratikte nasıl birlikte çalışır?
+### How they work together in practice
 
 ```
-Sen: "Login feature ekleyelim"
+You: "Let's add a login feature"
 
-Claude (coding-discipline aktif):
-  → Önce soru sorar, varsayım yapmaz
-  → Basit tutmayı önerir
+Claude (coding-discipline active):
+  → Asks clarifying questions before assuming
+  → Suggests the simplest approach
 
-Claude (superpowers aktif):
-  → "Önce brainstorming yapayım, tasarım onaylanmadan kod yazmam"
-  → Plan yazar: 2-5 dakikalık tasklar
-  → Her task için önce test yazar (TDD)
-  → Her major değişiklik sonrası code review ister
+Claude (superpowers active):
+  → "Let me brainstorm first — no code until the design is approved"
+  → Writes a plan broken into 2–5 minute tasks
+  → Writes tests before each implementation (TDD)
+  → Requests a code review after every major change
 ```
 
-`coding-discipline` pasif filtre gibi çalışır — her zaman arka planda aktif.
-`superpowers` aktif workflow'dur — ciddi bir iş yaparken devreye girer.
+`coding-discipline` works like a passive filter — always running in the background.
+`superpowers` is an active workflow — kicks in when you start serious work.
 
-İkisi çatışmaz, birbirini tamamlar.
+They don't conflict — they complement each other.
 
 ---
 
