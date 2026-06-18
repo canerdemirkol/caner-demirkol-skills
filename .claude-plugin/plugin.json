@@ -7,5 +7,5 @@
   },
   "license": "MIT",
   "keywords": ["guidelines", "best-practices", "coding"],
-  "skills": ["./skills/coding-discipline"]
+  "skills": ["./skills/coding-discipline", "./skills/superpowers"]
 }

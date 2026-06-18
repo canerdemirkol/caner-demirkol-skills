@@ -1,0 +1,130 @@
+---
+description: Structured agentic development workflow — brainstorming before coding, writing plans, TDD, systematic debugging, code review, and branch completion. Use when starting a feature, fixing a hard bug, or when correctness matters more than speed.
+alwaysApply: false
+---
+
+# Superpowers: Agentic Development Framework
+
+Systematic software development through composable, ordered workflows.
+
+**Core philosophy:** Design first. Test first. Review often. Verify before claiming done.
+
+**Tradeoff:** These workflows add ceremony. For trivial tasks, use `coding-discipline` instead.
+
+---
+
+## The Development Lifecycle
+
+```
+Brainstorm → Plan → Execute (with TDD) → Review → Finish
+```
+
+Always start with brainstorming for non-trivial work. Skip to planning only for clearly-scoped tasks.
+
+---
+
+## 1. Brainstorming
+
+**HARD GATE: Do NOT write any code until the design is approved.**
+
+1. Explore project context — files, docs, recent commits
+2. Ask clarifying questions — one at a time
+3. Propose 2–3 approaches with trade-offs and a recommendation
+4. Present design in sections; get approval before moving forward
+5. Write approved design to `docs/superpowers/specs/YYYY-MM-DD-<topic>-design.md`
+6. Self-review spec for placeholders, contradictions, and ambiguity
+7. Wait for user approval before writing a plan
+
+Applies to all tasks, including "simple" ones. Unexamined assumptions waste more time than a short brainstorm.
+
+---
+
+## 2. Writing Plans
+
+Break the approved design into 2–5 minute, independently-reviewable tasks.
+
+Each task must include:
+- Which files change and why
+- Exact commands to run
+- Expected output
+- Real code — no placeholders
+
+Save plans to `docs/superpowers/plans/YYYY-MM-DD-<feature>.md`
+
+---
+
+## 3. Test-Driven Development
+
+**Iron Law: No production code without a failing test first.**
+
+### RED → GREEN → REFACTOR
+
+1. **RED** — Write a minimal failing test
+2. **GREEN** — Write the simplest code to make it pass
+3. **REFACTOR** — Clean up while keeping tests green
+
+If code was written before tests: **delete the code. Start over.**
+
+| Excuse | Reality |
+|--------|---------|
+| "Too simple to test" | Simple code breaks. A test takes 30 seconds. |
+| "I'll test after" | Tests passing immediately prove nothing. |
+| "I manually tested it" | Manual testing doesn't catch regressions. |
+
+---
+
+## 4. Systematic Debugging
+
+**Rule: NO FIXES WITHOUT ROOT CAUSE INVESTIGATION FIRST.**
+
+1. **Investigate** — Read errors carefully, reproduce consistently, check recent changes
+2. **Analyze** — Find a working example, compare implementations, identify the difference
+3. **Hypothesize** — Form a specific theory, test with the minimal possible change
+4. **Fix** — Write a failing test first, implement root cause fix, verify
+
+**Red flags — return to step 1:**
+- "Quick fix for now"
+- "Just try changing X"
+- "I don't fully understand but this might work"
+
+---
+
+## 5. Code Review
+
+**Request reviews at:** after each major task, after completing a feature, before merging.
+
+**When receiving feedback:**
+1. Read completely before reacting
+2. Restate the requirement in your own words
+3. Verify against actual codebase
+4. Acknowledge factually or push back with reasoning
+5. Implement one item at a time
+
+---
+
+## 6. Finishing a Development Branch
+
+Before offering completion options, verify tests pass.
+
+Present exactly these options:
+1. Merge back to `<base-branch>` locally
+2. Push and create a Pull Request
+3. Keep the branch as-is
+4. Discard this work
+
+Never merge or create a PR if tests are failing.
+
+---
+
+## 7. Verification Before Completion
+
+**Rule: Evidence before claims, always.**
+
+Before asserting work is complete:
+1. Identify the exact command that validates the assertion
+2. Run it — fresh, not cached
+3. Examine full output and exit code
+4. Confirm results match the claim
+5. Only then make the claim
+
+Tentative language ("should work", "probably passes") = not verified.

@@ -1,0 +1,39 @@
+{
+  "name": "caner-demirkol-skills",
+  "version": "1.1.0",
+  "description": "Two skills: coding-discipline (behavioral guidelines) and superpowers (agentic development workflow with TDD, planning, code review, systematic debugging).",
+  "author": {
+    "name": "caner-demirkol",
+    "url": "https://github.com/canerdemirkol"
+  },
+  "homepage": "https://github.com/canerdemirkol/caner-demirkol-skills",
+  "repository": "https://github.com/canerdemirkol/caner-demirkol-skills",
+  "license": "MIT",
+  "keywords": [
+    "guidelines",
+    "best-practices",
+    "tdd",
+    "debugging",
+    "planning",
+    "code-review",
+    "workflow"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "caner-demirkol-skills",
+    "shortDescription": "Behavioral guidelines and agentic development workflows for coding agents",
+    "longDescription": "Two skills: coding-discipline for lightweight behavioral guardrails, and superpowers for structured agentic workflows including brainstorming, planning, TDD, systematic debugging, code review, and branch completion.",
+    "developerName": "caner-demirkol",
+    "category": "Coding",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "I have an idea for something I'd like to build.",
+      "Let's add a feature to this project."
+    ],
+    "websiteURL": "https://github.com/canerdemirkol/caner-demirkol-skills"
+  }
+}

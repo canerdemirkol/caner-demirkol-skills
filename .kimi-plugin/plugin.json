@@ -1,0 +1,34 @@
+{
+  "name": "caner-demirkol-skills",
+  "version": "1.1.0",
+  "description": "Two skills: coding-discipline (behavioral guidelines) and superpowers (agentic development workflow with TDD, planning, code review, systematic debugging).",
+  "author": {
+    "name": "caner-demirkol"
+  },
+  "homepage": "https://github.com/canerdemirkol/caner-demirkol-skills",
+  "repository": "https://github.com/canerdemirkol/caner-demirkol-skills",
+  "license": "MIT",
+  "keywords": [
+    "guidelines",
+    "best-practices",
+    "tdd",
+    "debugging",
+    "planning",
+    "code-review",
+    "workflow"
+  ],
+  "skills": "./skills/",
+  "skillInstructions": "Kimi Code tool mapping for these skills:\n\n- When a skill says to ask the user, ask clarifying questions, or present multiple-choice options, call Kimi Code's `AskUserQuestion` tool.\n- For `AskUserQuestion`, provide 1 question with 2-4 concrete options when possible. Put the recommended option first and suffix its label with `(Recommended)`.\n- When a skill refers to `TodoWrite`, use Kimi Code's `TodoList` tool.\n- When a skill says to dispatch an implementer/reviewer subagent, use Kimi Code's `Agent` tool. For implementation and code review use `subagent_type: \"coder\"`, for read-only exploration use `subagent_type: \"explore\"`, for planning use `subagent_type: \"plan\"`.\n- When a skill refers to the `Skill` tool, use Kimi Code's native `Skill` tool.\n- Use Kimi Code's `Read`, `Write`, `Edit`, `Bash`, `Grep`, `Glob`, `FetchURL`, `WebSearch` tools by their actual exposed names.",
+  "interface": {
+    "displayName": "caner-demirkol-skills",
+    "shortDescription": "Behavioral guidelines and agentic development workflows for coding agents",
+    "longDescription": "Two skills: coding-discipline for lightweight behavioral guardrails, and superpowers for structured agentic workflows including brainstorming, planning, TDD, systematic debugging, code review, and branch completion.",
+    "developerName": "caner-demirkol",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/canerdemirkol/caner-demirkol-skills"
+  }
+}
